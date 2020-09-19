@@ -40,7 +40,7 @@ internal fun updateAppWidget(
     val fortuneMaker = FortuneStrings(context)
     val fortune = fortuneMaker.getFortune()
     views.setTextViewText(R.id.fortune_text, fortune)
-
+    views.setTextViewTextSize(R.id.fortune_text, TypedValue.COMPLEX_UNIT_SP, 10f)
     // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)
 }
