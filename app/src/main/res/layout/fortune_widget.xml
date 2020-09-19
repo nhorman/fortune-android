@@ -16,7 +16,7 @@
         android:background="#00546267"
         android:contentDescription="@string/appwidget_text"
         android:scrollbars="vertical"
-        android:text="Fortune"
+        android:text="@string/fortune"
         android:textColor="#ffffff"
         android:textSize="24sp"
         android:textStyle="bold|italic" />
