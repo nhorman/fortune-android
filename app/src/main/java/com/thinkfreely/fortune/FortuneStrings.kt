@@ -10,7 +10,18 @@ data class FortIdx(val start: Int, val end: Int)
 
 class FortuneStrings(private val mycontext : Context) {
 
-    private val assetlist = arrayOf("art.txt", "ascii-art.txt", "computers.txt")
+    private val assetlist = arrayOf("art.txt", "ascii-art.txt", "computers.txt",
+                                    "cookie.txt", "debian.txt", "definitions.txt",
+                                    "disclaimer.txt", "drugs.txt", "education.txt",
+                                    "ethnic.txt", "food.txt", "fortunes.txt", "godel.txt",
+                                    "humorists.txt", "kids.txt", "knghtbrd.txt", "law.txt",
+                                    "linux.txt", "linuxcookie.txt", "literature.txt", "love.txt",
+                                    "magic.txt", "medicine.txt", "men-women.txt", "miscellaneous.txt",
+                                    "news.txt", "paradoxum.txt", "people.txt", "perl.txt", "pets.txt",
+                                    "platitudes.txt", "politics.txt", "pratchett.txt", "riddles.txt",
+                                    "science.txt", "songs-poems.txt", "riddles.txt", "sports.txt",
+                                    "startrek.txt", "tao.txt", "translate-me.txt", "wisdon.txt",
+                                    "work.txt", "zippy.txt")
 
     private fun selectAsset() : String {
         val rnd = Random.nextInt(assetlist.size)
