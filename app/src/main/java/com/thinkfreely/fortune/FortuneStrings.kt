@@ -10,7 +10,7 @@ data class FortIdx(val start: Int, val end: Int)
 
 class FortuneStrings(private val mycontext : Context) {
 
-    private val assetlist = arrayOf("art.txt")
+    private val assetlist = arrayOf("art.txt", "ascii-art.txt")
 
     private fun selectAsset() : String {
         val rnd = Random.nextInt(assetlist.size)
