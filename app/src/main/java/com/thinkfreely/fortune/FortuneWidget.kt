@@ -17,7 +17,7 @@ import android.util.TypedValue
 import android.widget.RemoteViews
 import java.util.*
 
-public var updateMills = 60000
+public var updateMills : Long = 60000
 /**
  * Implementation of App Widget functionality.
  */
