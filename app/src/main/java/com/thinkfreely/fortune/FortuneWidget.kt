@@ -1,15 +1,27 @@
 package com.thinkfreely.fortune
 
+import android.app.AlarmManager
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.appwidget.AppWidgetManager.ACTION_APPWIDGET_UPDATE
+import android.appwidget.AppWidgetManager.EXTRA_APPWIDGET_IDS
 import android.appwidget.AppWidgetProvider
+import android.content.ComponentName
+import android.content.ContentValues.TAG
 import android.content.Context
+import android.content.Intent
+import android.os.Handler
+import android.os.SystemClock
+import android.util.Log
 import android.util.TypedValue
 import android.widget.RemoteViews
+import java.util.*
 
 /**
  * Implementation of App Widget functionality.
  */
 class FortuneWidget : AppWidgetProvider() {
+
     override fun onUpdate(
         context: Context,
         appWidgetManager: AppWidgetManager,
@@ -19,7 +31,17 @@ class FortuneWidget : AppWidgetProvider() {
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId)
         }
+        val intent = Intent(context, FortuneWidget::class.java)
+        intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
+        intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds)
+        val pendingintent =
+            PendingIntent.getBroadcast(context, 0, intent, PendingIntent.FLAG_CANCEL_CURRENT)
+
+        val alarm : AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
+        alarm.cancel(pendingintent)
+        alarm.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(), 60000, pendingintent)
     }
+
 
     override fun onEnabled(context: Context) {
 
@@ -35,6 +57,7 @@ internal fun updateAppWidget(
     appWidgetManager: AppWidgetManager,
     appWidgetId: Int
 ) {
+    Log.e(TAG, "Got Update")
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.fortune_widget)
     val fortuneMaker = FortuneStrings(context)
