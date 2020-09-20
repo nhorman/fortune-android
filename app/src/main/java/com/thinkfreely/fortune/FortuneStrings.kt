@@ -13,14 +13,14 @@ class FortuneStrings(private val mycontext : Context) {
     private val assetlist = arrayOf("art.txt", "ascii-art.txt", "computers.txt",
                                     "cookie.txt", "debian.txt", "definitions.txt",
                                     "disclaimer.txt", "drugs.txt", "education.txt",
-                                    "ethnic.txt", "food.txt", "fortunes.txt", "godel.txt",
+                                    "ethnic.txt", "food.txt", "fortunes.txt", "goedel.txt",
                                     "humorists.txt", "kids.txt", "knghtbrd.txt", "law.txt",
                                     "linux.txt", "linuxcookie.txt", "literature.txt", "love.txt",
                                     "magic.txt", "medicine.txt", "men-women.txt", "miscellaneous.txt",
                                     "news.txt", "paradoxum.txt", "people.txt", "perl.txt", "pets.txt",
                                     "platitudes.txt", "politics.txt", "pratchett.txt", "riddles.txt",
                                     "science.txt", "songs-poems.txt", "riddles.txt", "sports.txt",
-                                    "startrek.txt", "tao.txt", "translate-me.txt", "wisdon.txt",
+                                    "startrek.txt", "tao.txt", "translate-me.txt", "wisdom.txt",
                                     "work.txt", "zippy.txt")
 
     private fun selectAsset() : String {
@@ -36,10 +36,13 @@ class FortuneStrings(private val mycontext : Context) {
         var tmpend = 0
         var tmpstart = 0
         var idxcount = 0
-
         while(idxcount != idx) {
             tmpstart = tmpend
             tmpend = s.indexOf('%', tmpend+1)
+            if (tmpend == -1) {
+                //crap, file has an error, just take the first element
+                return getFortuneIdx(s, 1)
+            }
             idxcount++
         }
         return FortIdx(tmpstart, tmpend)
@@ -61,8 +64,9 @@ class FortuneStrings(private val mycontext : Context) {
         finally {
             reader.close()
         }
-
+        println(asset)
         val contentstring = content.toString()
+        println(contentstring)
         val fortcount = getFortuneCount(contentstring)
         val fortuneid = Random.nextInt(fortcount)
         val idxs = getFortuneIdx(contentstring, fortuneid)
