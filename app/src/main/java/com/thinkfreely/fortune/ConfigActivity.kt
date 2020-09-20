@@ -1,11 +1,17 @@
 package com.thinkfreely.fortune
 
+import android.app.PendingIntent
 import android.appwidget.AppWidgetManager
+import android.content.Context
 import android.content.Intent
+import android.net.Uri
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.View
 import android.widget.Button
+import android.widget.RemoteViews
+import com.thinkfreely.fortune.FortuneWidget
 
 class ConfigActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -14,16 +20,7 @@ class ConfigActivity : AppCompatActivity() {
         setResult(RESULT_CANCELED)
         val donebutton = findViewById(R.id.doneButton) as Button
         val clicklistener = View.OnClickListener { view ->
-            var appWidgetId = AppWidgetManager.INVALID_APPWIDGET_ID;
-            val intent = getIntent()
-            val extras = intent.getExtras()
-            if (extras != null) {
-                appWidgetId = extras.getInt(AppWidgetManager.EXTRA_APPWIDGET_ID, AppWidgetManager.INVALID_APPWIDGET_ID)
-            }
-            if (appWidgetId == AppWidgetManager.INVALID_APPWIDGET_ID)
-                finish()
-            val resultValue = Intent()
-            resultValue.putExtra(AppWidgetManager.EXTRA_APPWIDGET_ID, appWidgetId)
+            com.thinkfreely.fortune.updateMills = 100000
             setResult(RESULT_OK)
             finish()
         }

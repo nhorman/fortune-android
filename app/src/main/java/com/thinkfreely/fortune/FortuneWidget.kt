@@ -17,6 +17,7 @@ import android.util.TypedValue
 import android.widget.RemoteViews
 import java.util.*
 
+public var updateMills = 60000
 /**
  * Implementation of App Widget functionality.
  */
@@ -27,6 +28,7 @@ class FortuneWidget : AppWidgetProvider() {
         appWidgetManager: AppWidgetManager,
         appWidgetIds: IntArray
     ) {
+        Log.e(TAG, "New Update period is " + updateMills.toString())
         // There may be multiple widgets active, so update all of them
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId)
@@ -39,7 +41,7 @@ class FortuneWidget : AppWidgetProvider() {
 
         val alarm : AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarm.cancel(pendingintent)
-        alarm.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(), 60000, pendingintent)
+        alarm.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(), updateMills, pendingintent)
     }
 
 
@@ -50,6 +52,7 @@ class FortuneWidget : AppWidgetProvider() {
     override fun onDisabled(context: Context) {
         // Enter relevant functionality for when the last widget is disabled
     }
+
 }
 
 internal fun updateAppWidget(
@@ -57,7 +60,6 @@ internal fun updateAppWidget(
     appWidgetManager: AppWidgetManager,
     appWidgetId: Int
 ) {
-    Log.e(TAG, "Got Update")
     // Construct the RemoteViews object
     val views = RemoteViews(context.packageName, R.layout.fortune_widget)
     val fortuneMaker = FortuneStrings(context)
