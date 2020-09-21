@@ -7,6 +7,7 @@ import java.util.concurrent.ThreadLocalRandom
 import kotlin.random.Random
 
 data class FortIdx(val start: Int, val end: Int)
+data class FortInfo(val fortune : String, val art: Boolean)
 
 class FortuneStrings(private val mycontext : Context) {
 
@@ -48,7 +49,7 @@ class FortuneStrings(private val mycontext : Context) {
         return FortIdx(tmpstart, tmpend)
     }
 
-    fun getFortune() : String {
+    fun getFortune() : FortInfo {
         val asset = selectAsset()
         val mngr = mycontext.getAssets()
         val fortunes = mngr.open(asset)
@@ -57,7 +58,7 @@ class FortuneStrings(private val mycontext : Context) {
         try {
             var line = reader.readLine()
             while (line != null) {
-                content.append(line)
+                content.append(line + "\n")
                 line = reader.readLine()
             }
         }
@@ -68,8 +69,13 @@ class FortuneStrings(private val mycontext : Context) {
         val contentstring = content.toString()
         println(contentstring)
         val fortcount = getFortuneCount(contentstring)
-        val fortuneid = Random.nextInt(fortcount)
+        val fortuneid = Random.nextInt(fortcount-1) + 1
+        println(fortuneid)
         val idxs = getFortuneIdx(contentstring, fortuneid)
-        return content.substring(idxs.start+1, idxs.end)
+        println(idxs)
+        if (asset.equals("ascii-art.txt"))
+            return FortInfo(content.substring(idxs.start+1, idxs.end), true)
+        else
+            return FortInfo(content.substring(idxs.start+1, idxs.end), false)
     }
 }

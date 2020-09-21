@@ -10,11 +10,15 @@ import android.content.ComponentName
 import android.content.ContentValues.TAG
 import android.content.Context
 import android.content.Intent
+import android.graphics.Typeface
 import android.os.Handler
 import android.os.SystemClock
 import android.util.Log
 import android.util.TypedValue
+import android.view.ViewGroup
 import android.widget.RemoteViews
+import android.widget.TextView
+import androidx.core.view.updateLayoutParams
 import java.util.*
 
 public var updateMills : Long = 60000
@@ -42,6 +46,7 @@ class FortuneWidget : AppWidgetProvider() {
         val alarm : AlarmManager = context.getSystemService(Context.ALARM_SERVICE) as AlarmManager
         alarm.cancel(pendingintent)
         alarm.setRepeating(AlarmManager.ELAPSED_REALTIME, SystemClock.elapsedRealtime(), updateMills, pendingintent)
+
     }
 
 
@@ -64,7 +69,7 @@ internal fun updateAppWidget(
     val views = RemoteViews(context.packageName, R.layout.fortune_widget)
     val fortuneMaker = FortuneStrings(context)
     val fortune = fortuneMaker.getFortune()
-    views.setTextViewText(R.id.fortune_text, fortune)
+    views.setTextViewText(R.id.fortune_text, fortune.fortune)
     views.setTextViewTextSize(R.id.fortune_text, TypedValue.COMPLEX_UNIT_SP, 10f)
     // Instruct the widget manager to update the widget
     appWidgetManager.updateAppWidget(appWidgetId, views)
