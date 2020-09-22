@@ -20,7 +20,7 @@
         android:ellipsize="end"
         android:focusable="true"
         android:fontFamily="sans-serif-condensed-medium"
-        android:scrollbars="vertical"
+        android:scrollbars="vertical|horizontal"
         android:scrollHorizontally="true"
         android:text="@string/fortune"
         android:textAlignment="viewStart"
