@@ -66,14 +66,10 @@ class FortuneStrings(private val mycontext : Context) {
         finally {
             reader.close()
         }
-        println(asset)
         val contentstring = content.toString()
-        println(contentstring)
         val fortcount = getFortuneCount(contentstring)
         val fortuneid = Random.nextInt(fortcount-1) + 1
-        println(fortuneid)
         val idxs = getFortuneIdx(contentstring, fortuneid)
-        println(idxs)
         if (asset.equals("ascii-art.txt"))
             return FortInfo(content.substring(idxs.start+1, idxs.end), true)
         else
