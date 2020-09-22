@@ -58,6 +58,7 @@ class FortuneStrings(private val mycontext : Context) {
         try {
             var line = reader.readLine()
             while (line != null) {
+                line = line.replace(" ", "\u0020",true)
                 content.append(line + "\n")
                 line = reader.readLine()
             }

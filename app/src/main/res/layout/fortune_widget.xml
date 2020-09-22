@@ -1,13 +1,14 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#4A546267"
     android:padding="@dimen/widget_margin">
 
     <TextView
         android:id="@+id/fortune_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
@@ -16,10 +17,20 @@
         android:background="#00546267"
         android:clickable="true"
         android:contentDescription="@string/appwidget_text"
+        android:ellipsize="end"
+        android:focusable="true"
+        android:fontFamily="sans-serif-condensed-medium"
         android:scrollbars="vertical"
+        android:scrollHorizontally="true"
         android:text="@string/fortune"
+        android:textAlignment="viewStart"
         android:textColor="#ffffff"
-        android:textSize="24sp"
-        android:textStyle="bold|italic" />
+        android:textSize="8sp"
+        android:textStyle="bold|italic"
+        android:typeface="normal"
+        app:autoSizeMaxTextSize="100sp"
+        app:autoSizeMinTextSize="10sp"
+        app:autoSizeStepGranularity="2sp"
+        app:autoSizeTextType="uniform" />
 
 </RelativeLayout>
