@@ -5,6 +5,13 @@
     android:background="#4A546267"
     android:padding="@dimen/widget_margin">
 
+    <Button
+        android:id="@+id/button"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#00AC5252"
+        android:visibility="visible" />
+
     <TextView
         android:id="@+id/fortune_text"
         android:layout_width="fill_parent"
