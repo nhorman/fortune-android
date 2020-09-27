@@ -21,14 +21,20 @@ class ConfigActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_config)
+        val updatetime = findViewById(R.id.editTextNumber) as EditText
+        updatetime.setText("0")
         setResult(RESULT_CANCELED)
         val donebutton = findViewById(R.id.doneButton) as Button
         val clicklistener = View.OnClickListener { view ->
             val updatetimetext = findViewById(R.id.editTextNumber) as EditText
-            var updatetime : Long = updatetimetext.getText().toString().toLong()
-            if (updatetime <= 60)
-                updatetime = 60
-            com.thinkfreely.fortune.updateMills = updatetime * 1000
+            var updatems = updatetimetext.getText().toString().toInt()
+            if (updatems == 0) {
+                FortuneWidget.updateTimer(0)
+            }
+            if (updatems <= 60 && updatems != 0) {
+                updatems = 60
+                FortuneWidget.updateTimer((updatems * 1000))
+            }
             setResult(RESULT_OK)
             finish()
         }
