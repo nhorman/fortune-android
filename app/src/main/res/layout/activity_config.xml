@@ -6,6 +6,61 @@
     android:layout_height="match_parent"
     tools:context=".ConfigActivity">
 
+    <LinearLayout
+        android:id="@+id/linearLayout"
+        android:layout_width="408dp"
+        android:layout_height="132dp"
+        android:layout_marginEnd="3dp"
+        android:layout_marginBottom="505dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/doneButton"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:id="@+id/updateLabel"
+            android:layout_width="wrap_content"
+            android:layout_height="19dp"
+            android:layout_marginStart="35dp"
+            android:layout_marginTop="69dp"
+            android:layout_marginEnd="12dp"
+            android:layout_marginBottom="643dp"
+            android:text="@string/update_frequency" />
+
+        <EditText
+            android:id="@+id/editTextNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="63dp"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="56dp"
+            android:layout_marginEnd="40dp"
+            android:layout_marginBottom="536dp"
+            android:autofillHints=""
+            android:contentDescription="@string/seconds_between_updates"
+            android:ems="10"
+            android:inputType="number" />
+
+    </LinearLayout>
+
+    <ScrollView
+        android:layout_width="787dp"
+        android:layout_height="478dp"
+        android:layout_marginStart="406dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="120dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout">
+
+        <LinearLayout
+            android:id="@+id/fortunelistlayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical" />
+    </ScrollView>
+
     <Button
         android:id="@+id/doneButton"
         android:layout_width="wrap_content"
@@ -20,33 +75,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <TextView
-        android:id="@+id/updateLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="69dp"
-        android:layout_marginEnd="12dp"
-        android:layout_marginBottom="643dp"
-        android:text="@string/update_frequency"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editTextNumber"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <EditText
-        android:id="@+id/editTextNumber"
-        android:layout_width="151dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="56dp"
-        android:layout_marginEnd="40dp"
-        android:layout_marginBottom="536dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:inputType="number"
-        app:layout_constraintBottom_toTopOf="@+id/doneButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/updateLabel"
-        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

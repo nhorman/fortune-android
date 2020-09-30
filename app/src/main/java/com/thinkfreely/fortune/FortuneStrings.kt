@@ -11,7 +11,10 @@ data class FortInfo(val fortune : String, val art: Boolean)
 
 class FortuneStrings(private val mycontext : Context) {
 
-    private val assetlist = arrayOf("art.txt", "ascii-art.txt", "computers.txt",
+    private val assetlist = assetobj.getAssetlist()
+
+    companion object assetobj {
+         private  var MyAssetList = arrayOf("art.txt", "ascii-art.txt", "computers.txt",
                                     "cookie.txt", "debian.txt", "definitions.txt",
                                     "disclaimer.txt", "drugs.txt", "education.txt",
                                     "ethnic.txt", "food.txt", "fortunes.txt", "goedel.txt",
@@ -23,6 +26,15 @@ class FortuneStrings(private val mycontext : Context) {
                                     "science.txt", "songs-poems.txt", "riddles.txt", "sports.txt",
                                     "startrek.txt", "tao.txt", "translate-me.txt", "wisdom.txt",
                                     "work.txt", "zippy.txt")
+
+        fun getAssetlist() : Array<String> {
+            return MyAssetList
+        }
+
+        fun setAssetlist(newlist: Array<String>) {
+            MyAssetList = newlist
+        }
+    }
 
     private fun selectAsset() : String {
         val rnd = Random.nextInt(assetlist.size)

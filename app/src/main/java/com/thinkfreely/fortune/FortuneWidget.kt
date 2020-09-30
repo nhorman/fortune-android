@@ -32,7 +32,6 @@ class FortuneWidget : AppWidgetProvider() {
         var updateMills : Int = 0
         fun updateTimer(periodms: Int) {
             updateMills = periodms
-
         }
     }
 
@@ -46,7 +45,6 @@ class FortuneWidget : AppWidgetProvider() {
         for (appWidgetId in appWidgetIds) {
             updateAppWidget(context, appWidgetManager, appWidgetId, appWidgetIds)
         }
-        println(updateMills)
         if (updateMills != 0) {
             val timerintent = Intent(context, FortuneWidget::class.java)
             timerintent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE)
