@@ -53,10 +53,16 @@ class ConfigActivity : AppCompatActivity() {
                 val assetMList = assetlist.toMutableList()
 
                 if (!checkbox.isChecked) {
-                    val idx = assetlist.indexOf(text)
-                    assetMList.removeAt(idx)
-                    val newassets = assetMList.toTypedArray() as Array<String>
-                    FortuneStrings.setAssetlist(newassets)
+                    if (assetlist.size == 1) {
+                        val toast = Toast.makeText(applicationContext, "Must leave at least one box checked", Toast.LENGTH_SHORT)
+                        toast.show()
+                        checkbox.setChecked(true)
+                    } else {
+                        val idx = assetlist.indexOf(text)
+                        assetMList.removeAt(idx)
+                        val newassets = assetMList.toTypedArray() as Array<String>
+                        FortuneStrings.setAssetlist(newassets)
+                    }
                 } else {
                     assetMList.add(text)
                     val newassets = assetMList.toTypedArray() as Array<String>
