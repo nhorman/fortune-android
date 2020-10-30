@@ -6,56 +6,16 @@
     android:layout_height="match_parent"
     tools:context=".ConfigActivity">
 
-    <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="408dp"
-        android:layout_height="132dp"
-        android:layout_marginEnd="3dp"
-        android:layout_marginBottom="505dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/doneButton"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent">
-
-        <TextView
-            android:id="@+id/updateLabel"
-            android:layout_width="wrap_content"
-            android:layout_height="19dp"
-            android:layout_marginStart="35dp"
-            android:layout_marginTop="69dp"
-            android:layout_marginEnd="12dp"
-            android:layout_marginBottom="643dp"
-            android:text="@string/update_frequency" />
-
-        <EditText
-            android:id="@+id/editTextNumber"
-            android:layout_width="wrap_content"
-            android:layout_height="63dp"
-            android:layout_marginStart="12dp"
-            android:layout_marginTop="56dp"
-            android:layout_marginEnd="40dp"
-            android:layout_marginBottom="536dp"
-            android:autofillHints=""
-            android:contentDescription="@string/seconds_between_updates"
-            android:ems="10"
-            android:inputType="number" />
-
-    </LinearLayout>
-
     <ScrollView
         android:id="@+id/scrollView2"
-        android:layout_width="783dp"
-        android:layout_height="365dp"
+        android:layout_width="743dp"
+        android:layout_height="343dp"
         android:layout_marginStart="406dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginBottom="120dp"
+        android:layout_marginBottom="208dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/linearLayout"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintHorizontal_bias="0.539"
+        app:layout_constraintStart_toStartOf="parent">
 
         <LinearLayout
             android:id="@+id/fortunelistlayout"
@@ -80,8 +40,8 @@
 
     <com.google.android.gms.ads.AdView
         android:id="@+id/adView"
-        android:layout_width="397dp"
-        android:layout_height="59dp"
+        android:layout_width="396dp"
+        android:layout_height="75dp"
         app:adSize="BANNER"
         app:adUnitId="ca-app-pub-1167846070848710/7709019382"
         app:layout_constraintBottom_toTopOf="@+id/doneButton"

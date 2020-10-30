@@ -21,8 +21,8 @@ class ConfigActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_config)
-        val updatetime = findViewById(R.id.editTextNumber) as EditText
-        updatetime.setText("0")
+        //val updatetime = findViewById(R.id.editTextNumber) as EditText
+        //updatetime.setText("0")
 
         val MyAssetList = arrayOf("art.txt", "ascii-art.txt", "computers.txt",
                                     "cookie.txt", "debian.txt", "definitions.txt",
@@ -86,15 +86,15 @@ class ConfigActivity : AppCompatActivity() {
         setResult(RESULT_CANCELED)
         val donebutton = findViewById(R.id.doneButton) as Button
         val clicklistener = View.OnClickListener { view ->
-            val updatetimetext = findViewById(R.id.editTextNumber) as EditText
-            var updatems = updatetimetext.getText().toString().toInt()
-            if (updatems == 0) {
-                FortuneWidget.updateTimer(0)
-            }
-            if (updatems <= 60 && updatems != 0) {
-                updatems = 60
-                FortuneWidget.updateTimer((updatems * 1000))
-            }
+            //val updatetimetext = findViewById(R.id.editTextNumber) as EditText
+            //var updatems = updatetimetext.getText().toString().toInt()
+            //if (updatems == 0) {
+                //ortuneWidget.updateTimer(0)
+            //}
+            //if (updatems <= 60 && updatems != 0) {
+                //updatems = 60
+                //FortuneWidget.updateTimer((updatems * 1000))
+            //}
             setResult(RESULT_OK)
             finish()
         }
